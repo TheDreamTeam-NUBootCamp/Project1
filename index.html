@@ -23,12 +23,15 @@
 
   <!-- Artist Information -->
   <div id="book-div"></div>
+  <div class="div"></div>
+  
 
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-    
+    //I like pizza
+
 //   function searchBooks(title) {
 
 //     // Querying the bandsintown api for the selected artist, the ?app_id parameter is required, but can equal anything
@@ -67,7 +70,7 @@
 function searchBooks(place) {
 
 // Querying the bandsintown api for the selected artist, the ?app_id parameter is required, but can equal anything
-var queryURL = "https://openlibrary.org/search.json?place="+place;
+var queryURL = "https://openlibrary.org/search.json?place="+ place +"&subject=fiction";
 $.ajax({
   url: queryURL,
   method: "GET"
@@ -88,6 +91,8 @@ $.ajax({
    var bookTitle = $("<h1>").text(response.docs[i].title);
    var bookAuthor = $("<h2>").text(response.docs[i].author_name);
    var bookCover = $("<img>").attr("src", "https://covers.openlibrary.org/b/id/" + response.docs[i].cover_i + "-L.jpg");
+   var bookIsbn = response.docs[i].isbn[0];
+   console.log(bookIsbn);
    //var bookLocation = $("<h2>").text(response.docs[i].place);
 
 
@@ -103,6 +108,7 @@ $.ajax({
 
 
 
+
   // Event handler for user clicking the select-artist button
   $("#select-book").on("click", function(event) {
     // Preventing the button from trying to submit the form
@@ -113,6 +119,7 @@ $.ajax({
     // Running the searchBandsInTown function(passing in the artist as an argument)
     searchBooks(inputBook);
   });
+  
 
 </script>
 
