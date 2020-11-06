@@ -14,8 +14,9 @@
 <body>
 
     <script>
-        var queryURL = "https://www.googleapis.com/books/v1/volumes?q=978-0553212457"
-
+        var isbnArray = "0804900868"
+        var queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + isbnArray + "+isbn";
+        console.log(queryURL);
         $.ajax({
             url: queryURL,
             method: "GET"
