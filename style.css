@@ -1,5 +1,5 @@
 * {
-background-image: url("../travel.png" );
+background-image: url(https://www.peabodylibrary.org/freeforall/wp-content/uploads/2015/09/book-of-travel-australiafrancei-talynew-yorkindia1.jpg);
 
  
 
@@ -22,4 +22,10 @@ background-image: url("../travel.png" );
 .section  {
 
     background-color: orangered;
+}
+
+.title-bar {
+
+    background-image: url(https://www.peabodylibrary.org/freeforall/wp-content/uploads/2015/09/book-of-travel-australiafrancei-talynew-yorkindia1.jpg);
+
 }
