@@ -1,5 +1,7 @@
 * {
-background-image: url(https://www.peabodylibrary.org/freeforall/wp-content/uploads/2015/09/book-of-travel-australiafrancei-talynew-yorkindia1.jpg);
+
+
+    /* background-image: url(travelbg.jpeg); */
 
  
 
@@ -24,8 +26,20 @@ background-image: url(https://www.peabodylibrary.org/freeforall/wp-content/uploa
     background-color: orangered;
 }
 
-.title-bar {
+.subheader {
 
-    background-image: url(https://www.peabodylibrary.org/freeforall/wp-content/uploads/2015/09/book-of-travel-australiafrancei-talynew-yorkindia1.jpg);
+    /* background-image: url(travelbg.jpeg); */
+
+}
+
+textarea {
+
+        background-image: url(travelbg.jpeg);
+
+}
+
+.button {
+
+    background-image: url(depositphotos_173520066-stock-illustration-vector-globe-vintage-world-map.jpg)
 
 }
