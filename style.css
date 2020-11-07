@@ -1,7 +1,11 @@
 * {
 
+font-family: 'Cormorant Garamond', serif;
 
-    /* background-image: url(travelbg.jpeg); */
+font-size: 20px;
+
+background-color: rgb(247, 243, 236);
+
 
  
 
@@ -10,27 +14,10 @@
 
 
 
-.container {
-  
-   
-    margin-top: 15px;
-    
-
-    background: orange;
-    
 
 
-}
-.section  {
 
-    background-color: orangered;
-}
 
-.subheader {
-
-    /* background-image: url(travelbg.jpeg); */
-
-}
 
 textarea {
 
@@ -40,6 +27,6 @@ textarea {
 
 .button {
 
-    background-image: url(depositphotos_173520066-stock-illustration-vector-globe-vintage-world-map.jpg)
+        background-image: url(travelbg.jpeg);
 
 }
