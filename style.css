@@ -5,12 +5,19 @@ font-family: 'Cormorant Garamond', serif;
 font-size: 20px;
 
 background-color: rgb(247, 243, 236);
-
-
  
 
 }
 
+h1 {
+
+       font-family: 'Cormorant Garamond', serif; 
+}
+
+ data-toggle {
+
+        background: brown;
+ }
 
 
 
@@ -28,5 +35,5 @@ textarea {
 .button {
 
         background-image: url(travelbg.jpeg);
-
-}
+        
+        }
