@@ -1,5 +1,11 @@
 * {
-background-image: url("../travel.png" );
+
+font-family: 'Cormorant Garamond', serif;
+
+font-size: 20px;
+
+background-color: rgb(247, 243, 236);
+
 
  
 
@@ -8,18 +14,19 @@ background-image: url("../travel.png" );
 
 
 
-.container {
-  
-   
-    margin-top: 15px;
-    
 
-    background: orange;
-    
 
+
+
+
+textarea {
+
+        background-image: url(travelbg.jpeg);
 
 }
-.section  {
 
-    background-color: orangered;
+.button {
+
+        background-image: url(travelbg.jpeg);
+
 }
