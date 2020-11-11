@@ -45,7 +45,7 @@ function searchBooks(place) {
 
         //console.log(response.docs);
 
-        
+
 
         for (var i = 0; i < 10; i++) {
 
@@ -57,7 +57,7 @@ function searchBooks(place) {
             bookList.push(bookObj);
             console.log(bookObj);
             console.log(bookList);
-        } 
+        }
         // The following is to create an array that has all of the first api call's isbns. 
         //
         //var isbnArr = [];
@@ -79,24 +79,7 @@ function searchBooks(place) {
         // }
         //console.log(isbnArr);
     });
-} 
-
-
-
-
-function googleSearch() {
-    var isbn = "978-0553212457";
-    //  var queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + isbn;
-    var queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + isbn;
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function(response) {
-        console.log(response);
-
-    });
 }
-
 
 
 // Event handler for user clicking the select-artist button
@@ -109,58 +92,51 @@ $("#select-book").on("click", function(event) {
 
     // Running the searchBandsInTown function(passing in the artist as an argument)
     searchBooks(inputBook);
-    //googleSearch();
-    getRatings();
+    // Run getTopTen to get 10 most reviewed books from bookList, store as new variable 
+    var topTenBookList = getTopTen(bookList);
+    console.log(topTenBookList);
 });
 
+function getTopTen(booksArray) {
+    //loop for each entry in book list
+    for (let i = 0; i < booksArray.length; i++) {
+        //get current title
+        let title = bookArray[i].title;
 
+        //search google book api for current title
+        let queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + title;
 
+        //ajax call
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).done(function(response) {
+            //store number of ratings as score
+            let numRatings = response.items[0].volumeInfo.ratingsCount;
+            let avgRating = response.items[0].volumeInfo.averageRating;
+            //assign scores each object in book list, assign value of 0 if undefined
+            if (numRatings > 0) {
+                booksArray[i].numscores = numRatings;
+                booksArray[i].avgScore = avgRating;
+            } else {
+                booksArray[i].numscores = 0;
+                booksArray[i].avgScore = 0;
+            }
+        })
+    }
 
-function getRatings() { //eventually needs to take in the array bookObj
-    //list of titles (example book object)
-
-    console.log(bookList);
-
-    // let bookObj = [{
-    //     title: "Breakfast of Champions"
-    // }, {
-    //     title: "slaughterhouse five",
-    // }, {
-    //     title: "cat's cradle"
-    // }, {
-    //     title: "sirens of titan"
-    // }, {
-    //     title: "welcome to the monkey house"
-    // }];
-    //loop for each entry in title list
-    // for (let i = 0; i < bookObj.length; i++) {
-    //     //get current title
-    //     let title = bookObj[i].title;
-    //     //search google book api for current title
-    //     let queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + title;
-    //     //ajax call
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function(response) {
-    //         console.log(response.items);
-    //         //store number of ratings as score
-    //         let numRatings = response.items[0].volumeInfo.ratingsCount;
-    //         let avgRating = response.items[0].volumeInfo.averageRating;
-    //         if (numRatings > 0) {
-    //             bookObj[i].numscores = numRatings;
-    //             bookObj[i].avgScore = avgRating;
-    //         } else {
-    //             bookObj[i].numscores = 0;
-    //             bookObj[i].avgScore = 0;
-    //         }
-    //     })
-    // }
-    //scratch work on sort method
-    // console.log(bookObj.numscores);
-    // // bookObj.sort((a, b) {
-    // //     return a.numscores - b.numscores
-    // // });
-    // (a, b)
-    // console.log(bookObj);
+    function sortByNumScores(bookArray) {
+        //sort books by number of scores (ascending)
+        let sortedBooks = _.sortBy(bookArray, function(book) {
+            return book.numscores;
+        });
+        //take 10 highest rated books
+        sortedBooks.reverse();
+        let topTen = sortedBooks
+        return topTen.slice(0, 10);
+    }
+    setTimeout(function() {
+        console.log("sorted array", sortByNumScores(booksArray));
+        return sortByNumScores(booksArray);
+    }, 1000)
 }
