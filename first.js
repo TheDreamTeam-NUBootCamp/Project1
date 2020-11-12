@@ -74,9 +74,9 @@ function searchBooks(place, genre) {
         //
         // Empty the contents of the book-div, append the new book content
         //
-           $("#book-div").empty();
-           $("#book-div").append(bookTitle, bookAuthor, bookCover);
-        //
+        //    $("#book-div").empty();
+        //    $("#book-div").append(bookTitle, bookAuthor, bookCover);
+        // //
         // }
         //console.log(isbnArr);
     });
@@ -93,34 +93,41 @@ $("#select-book").on("click", function(event) {
 
     // Clearing the bookobj list before every search
     // clearArray();
-    bookList = [];
+    // bookList = [];
     // Running the searchBandsInTown function(passing in the artist as an argument)
     searchBooks(inputBook,inputGenre);
     // Run getTopTen to get 10 most reviewed books from bookList, store as new variable 
-    var topTenBookList = getTopTen(bookList);
+    
+    var topTenBookList
+    getTopTen(bookList).then((values) => {
+        console.log(values);
+        topTenBookList = values;
+      });
 
-    // console.log(topTenBookList);
+    console.log(topTenBookList);
 });
 
-localStorage.setItem("bookList", JSON.stringify(bookList)); 
+// localStorage.setItem("bookList", JSON.stringify(bookList)); 
 
  
 
 function getTopTen(booksArray) {
+    var ajaxPromises = [];
     //loop for each entry in book list
     for (let i = 0; i < booksArray.length; i++) {
         //get current title
         let title = booksArray[i].title;
 
         //search google book api for current title
-        let queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + title;
-
+        
         //ajax call
-        $.ajax({
-            url: queryURL,
+       
+      ajaxPromises[i] = $.ajax({
+            url: "https://www.googleapis.com/books/v1/volumes?q=" + title,
             method: "GET"
         }).done(function(response) {
             //store number of ratings as score
+             
             let numRatings = response.items[0].volumeInfo.ratingsCount;
             let avgRating = response.items[0].volumeInfo.averageRating;
             //assign scores each object in book list, assign value of 0 if undefined
@@ -131,21 +138,26 @@ function getTopTen(booksArray) {
                 booksArray[i].numscores = 0;
                 booksArray[i].avgScore = 0;
             }
-        })
+        })  
     }
 
-    function sortByNumScores(bookArray) {
-        //sort books by number of scores (ascending)
-        let sortedBooks = _.sortBy(bookArray, function(book) {
-            return book.numscores;
-        });
-        //take 10 highest rated books
-        sortedBooks.reverse();
-        let topTen = sortedBooks
-        return topTen.slice(0, 10);
-    }
+return Promise.all(ajaxPromises).then((values) => {
+    console.log(values);
+    return sortByNumScores(booksArray);
+  });
+    
     setTimeout(function() {
         console.log("sorted array", sortByNumScores(booksArray));
         return sortByNumScores(booksArray);
     }, 1000)
+}
+function sortByNumScores(bookArray) {
+    //sort books by number of scores (ascending)
+    let sortedBooks = _.sortBy(bookArray, function(book) {
+        return book.numscores;
+    });
+    //take 10 highest rated books
+    sortedBooks.reverse();
+    let topTen = sortedBooks
+    return topTen.slice(0, 10);
 }
