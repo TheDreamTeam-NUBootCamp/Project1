@@ -33,11 +33,11 @@
 
 // Function for the first api call that returns an array of objects
 
-const bookList = [];
+let bookList = [];
 
-function searchBooks(place) {
+function searchBooks(place, genre) {
 
-    var queryURL = "https://openlibrary.org/search.json?place=" + place + "&subject=fiction&subject=mystery";
+    var queryURL = "https://openlibrary.org/search.json?place=" + place + "&subject=fiction&subject=" + genre;
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -48,6 +48,7 @@ function searchBooks(place) {
 
 
         for (var i = 0; i < 10; i++) {
+
 
             let bookObj = {
                 bookTitle: response.docs[i].title,
@@ -71,16 +72,15 @@ function searchBooks(place) {
         //
         //   isbnArr.push(bookIsbn);
         //
-        //   // Empty the contents of the book-div, append the new book content
+        // Empty the contents of the book-div, append the new book content
         //
-        //   $("#book-div").empty();
-        //   $("#book-div").append(bookTitle, bookAuthor, bookCover);
+           $("#book-div").empty();
+           $("#book-div").append(bookTitle, bookAuthor, bookCover);
         //
         // }
         //console.log(isbnArr);
     });
 }
-
 
 // Event handler for user clicking the select-artist button
 
@@ -89,12 +89,17 @@ $("#select-book").on("click", function(event) {
     event.preventDefault();
     // Storing the book name
     var inputBook = $("#input-city").val().trim();
+    var inputGenre = $("#genres").val().trim();
 
+    // Clearing the bookobj list before every search
+    // clearArray();
+    bookList = [];
     // Running the searchBandsInTown function(passing in the artist as an argument)
-    searchBooks(inputBook);
+    searchBooks(inputBook,inputGenre);
     // Run getTopTen to get 10 most reviewed books from bookList, store as new variable 
     var topTenBookList = getTopTen(bookList);
-    console.log(topTenBookList);
+
+    // console.log(topTenBookList);
 });
 
 function getTopTen(booksArray) {
