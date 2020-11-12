@@ -102,11 +102,15 @@ $("#select-book").on("click", function(event) {
     // console.log(topTenBookList);
 });
 
+localStorage.setItem("bookList", JSON.stringify(bookList)); 
+
+ 
+
 function getTopTen(booksArray) {
     //loop for each entry in book list
     for (let i = 0; i < booksArray.length; i++) {
         //get current title
-        let title = bookArray[i].title;
+        let title = booksArray[i].title;
 
         //search google book api for current title
         let queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + title;
