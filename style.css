@@ -2,96 +2,85 @@
 * {
 
 font-family: 'Cormorant Garamond', serif;
-
 font-size: 20px;
-
-background-color: rgb(247, 243, 236);
-
 text-align: center;
-
-margin-top: 20px;
-
-background-image: url(./imageFolder/thecode1-1.png);
-        background-image: url(https://www.r-graph-gallery.com/how-to-draw-connecting-routes-on-map-with-r-and-great-circles_files/figure-html/thecode1-1.png);
-
-}
-
-.row {
-
-        margin-right: 30px;
+margin-top: auto;
+margin-left: auto;
+margin-right: auto;
+color:black;
 
 }
 
-::placeholder {
-          
-
+header {
+        padding-bottom: 25px;
 }
 
-.subheader {
 
-        font-weight: 80px;
-        color: black;
-        background-image: url(https://www.r-graph-gallery.com/how-to-draw-connecting-routes-on-map-with-r-and-great-circles_files/figure-html/thecode1-1.png);
-        
-      text-emphasis: center;
-      margin-left: 25px;
-    
-
-}       
-
-label {
-
-    
-       font-family: 'Cormorant Garamond', serif; 
-
-        font-size: 35px;
-
-        line-height: .8;
-   
-     
-        
-
-
-
+body {
+        background-image: url(./pictureFolderRdH/map-png-1200_857.png);
 }
 
 h1 {
+font-family: 'Cormorant Garamond', serif;
+font-size: 30px;
+font-weight: bolder;
 
-       font-family: 'Cormorant Garamond', serif; 
-       margin-left: 20px;
 }
+
+h2 {
+font-family: 'Cormorant Garamond', serif;
+font-size: 30px;
+font-weight: bolder;
+color: black;
+outline: black 2px;
+}
+
+label {
+font-weight: bolder;
+font-family: 'Cormorant Garamond', serif; 
+font-size: 35px;
+line-height: .8;
+   
+}
+
+.subheader {
+font-weight: bolder;
+color: black;
+text-align: center;
+font-size: 28px;
+   
+}       
 
 
 .lead {
- font-family: 'Cormorant Garamond', serif; 
-        background-image: url(./travelbg.jpeg)
-
-
+font-family: 'Cormorant Garamond', serif; 
+font-weight: bolder;
 
 }
-
 
 
 #menu {
-
-        margin-top: 10px;
+margin-top: 10px;
 }
 
-
-textarea {
-
-        background-image: url(./imageFolder/travelbg.jpeg);
-
-}
 
 .button  {
-
-   background-image: url(./imageFolder/travelbg.jpeg);
-background-color: url(./imageFolder/travelbg.jpeg);
-   color: black;
-
-   font-weight: 30px;
-        font-size: 20px;
-   text-align: justify;
+   color:white;
+   font-weight: bolder;
+   font-size: 20px;
+   text-align: center;
         
         }
+
+#signUp {
+font-family: 'Cormorant Garamond', serif; 
+font-weight: bolder;
+
+
+}
+
+
+#outPt.column {
+
+}
+
