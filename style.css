@@ -3,7 +3,6 @@
 
 font-family: 'Cormorant Garamond', serif;
 font-size: 20px;
-
 text-align: center;
 margin-top: auto;
 margin-left: auto;
@@ -16,23 +15,24 @@ header {
         padding-bottom: 25px;
 }
 
+
 body {
         background-image: url(./pictureFolderRdH/map-png-1200_857.png);
 }
 
-
-.subheader {
+h1 {
+font-family: 'Cormorant Garamond', serif;
+font-size: 30px;
 font-weight: bolder;
-        color: black;
-        text-align: center;
-font-size: 28px;
-   
- 
-}       
 
-.container{
-/* background-image: url(./pictureFolderRdH/map-png-1200_857.png); */
+}
 
+h2 {
+font-family: 'Cormorant Garamond', serif;
+font-size: 30px;
+font-weight: bolder;
+color: black;
+outline: black 2px;
 }
 
 label {
@@ -41,8 +41,15 @@ font-family: 'Cormorant Garamond', serif;
 font-size: 35px;
 line-height: .8;
    
-
 }
+
+.subheader {
+font-weight: bolder;
+color: black;
+text-align: center;
+font-size: 28px;
+   
+}       
 
 
 .lead {
@@ -52,21 +59,22 @@ font-weight: bolder;
 }
 
 
-
 #menu {
-
-        margin-top: 10px;
+margin-top: 10px;
 }
 
 
-
 .button  {
-
-
-   color: black;
-
-   font-weight: 30px;
-        font-size: 20px;
+   color:white;
+   font-weight: bolder;
+   font-size: 20px;
    text-align: center;
         
         }
+
+#signUp {
+font-family: 'Cormorant Garamond', serif; 
+font-weight: bolder;
+
+
+}
