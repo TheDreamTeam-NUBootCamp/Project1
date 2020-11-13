@@ -2,17 +2,12 @@
 * {
 
 font-family: 'Cormorant Garamond', serif;
-
 font-size: 20px;
-
 background-color: rgb(247, 243, 236);
-
 text-align: center;
-
 margin-top: 20px;
-
 background-image: url(./imageFolder/thecode1-1.png);
-        background-image: url(https://www.r-graph-gallery.com/how-to-draw-connecting-routes-on-map-with-r-and-great-circles_files/figure-html/thecode1-1.png);
+background-image: url(https://www.r-graph-gallery.com/how-to-draw-connecting-routes-on-map-with-r-and-great-circles_files/figure-html/thecode1-1.png);
 
 }
 
@@ -22,16 +17,15 @@ background-image: url(./imageFolder/thecode1-1.png);
 
 }
 
-::placeholder {
-          
 
-}
 
 .subheader {
 
+        
+
         font-weight: 80px;
         color: black;
-        background-image: url(https://www.r-graph-gallery.com/how-to-draw-connecting-routes-on-map-with-r-and-great-circles_files/figure-html/thecode1-1.png);
+   
         
       text-emphasis: center;
       margin-left: 25px;
@@ -41,6 +35,7 @@ background-image: url(./imageFolder/thecode1-1.png);
 
 label {
 
+      
     
        font-family: 'Cormorant Garamond', serif; 
 
@@ -59,7 +54,8 @@ h1 {
 
        font-family: 'Cormorant Garamond', serif; 
        margin-left: 20px;
-}
+       background-image: url(./READhereLogo.jpeg);
+       
 
 
 .lead {
