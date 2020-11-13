@@ -25,6 +25,10 @@ Included in the list of books is the title, author, description? (what else are 
 
 ## Credits
 The Dream Team: Jordan, Jen, Lauren, Rafael
+Our API's: 
+Open Library: https://openlibrary.org 
+GoogleBooks: https://www.googleapis.com/books 
+With a little help from friends and our esteemed instructor Lori
  
  
 https://coderwall.com/p/w7npmq/fully-custom-select-box-simple-css-only
