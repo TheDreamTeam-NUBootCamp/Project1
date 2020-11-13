@@ -31,9 +31,11 @@
 //   }
 
 
-// Function for the first api call that returns an array of objects
+// Function for the first api call that returns an array of objects language: ["eng"]
 
-let bookList = [];
+// let bookList = [];
+
+// Goodreads api key  tDrW4sMilizM7SJtcV9ufQ
 
 function searchBooks(place, genre) {
 
@@ -41,50 +43,113 @@ function searchBooks(place, genre) {
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function(response) {
+    }).then(function (response) {
 
-        //console.log(response.docs);
+        // console.log(response.docs);
 
+        let bookObj = {};
 
+        for (var i = 0; i < 50; i++) {
 
-        for (var i = 0; i < 10; i++) {
-
+            if (bookTitle = undefined) {
+                bookTitle: "unknown";
+            }
 
             let bookObj = {
                 bookTitle: response.docs[i].title,
                 bookAuthor: response.docs[i].author_name,
                 bookLocation: response.docs[i].place,
+                bookIsn: response.docs[i].isbn,
             }
             bookList.push(bookObj);
-            console.log(bookObj);
-            console.log(bookList);
+            //console.log(bookObj);
+            
         }
-        // The following is to create an array that has all of the first api call's isbns. 
-        //
-        //var isbnArr = [];
-        //
-        // for (var i = 0; i < 10; i++) {
-        //   var bookTitle = $("<h1>").text(response.docs[i].title);
-        //   var bookAuthor = $("<h2>").text(response.docs[i].author_name);
-        //   var bookCover = $("<img>").attr("src", "https://covers.openlibrary.org/b/id/" + response.docs[i].cover_i + "-L.jpg");
-        //   var bookIsbn = response.docs[i].isbn[0];
-        //   var bookLocation = $("<h2>").text(response.docs[i].place);
-        //
-        //   isbnArr.push(bookIsbn);
-        //
-        // Empty the contents of the book-div, append the new book content
-        //
-           $("#book-div").empty();
-           $("#book-div").append(bookTitle, bookAuthor, bookCover);
-        //
-        // }
-        //console.log(isbnArr);
+
+        console.log(bookList);
+
+        // var booksArray = bookList;
+
+
+
+        var booksArray = bookList;
+
+        function getTopTen(booksArray) {
+            //loop for each entry in book list
+
+            var booksArray = bookList;
+
+            // console.log(booksArray);
+
+            for (let i = 0; i < 50; i++) {
+                //get current title
+                let title = booksArray[i].bookTitle;
+                let author = booksArray[i].bookAuthor;
+                //let isbn = booksArray[i].bookIsn;
+
+                // console.log(title);
+                // console.log(author);
+                // console.log(isbn);
+
+                //search google book api for current title
+                var queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + title + author;
+
+                //ajax call
+                $.ajax({
+                    url: queryURL,
+                    method: "GET"
+                }).then(function (response) {
+
+                    console.log(response);
+
+                    // store number of ratings as score
+                     let numRatings = response.items[0].volumeInfo.ratingsCount;
+                     let avgRating = response.items[0].volumeInfo.averageRating;
+                    // assign scores each object in book list, assign value of 0 if undefined
+                     if (numRatings > 0) {
+                         booksArray[i].numscores = numRatings;
+                         booksArray[i].avgScore = avgRating;
+                     } else {
+                         booksArray[i].numscores = 0;
+                         booksArray[i].avgScore = 0;
+                     }
+                })
+            }
+
+            console.log(booksArray);
+
+
+            function sortByNumScores(booksArray) {
+                 //sort books by number of scores (ascending)
+                let sortedBooks = _.sortBy(booksArray, function (book) {
+                     return book.numscores;
+                 });
+            //     take 10 highest rated books
+                 sortedBooks.reverse();
+                 let topTen = sortedBooks
+                return topTen.slice(0, 10);
+             }
+             setTimeout(function () {
+                 console.log("sorted array", sortByNumScores(booksArray));
+                 return sortByNumScores(booksArray);
+             }, 1000)
+        }
+        getTopTen();
+        
+        
+
+        // var topTenBookList = getTopTen(bookList);
+        // console.log(topTenBookList);
+
     });
 }
 
+
+
+
 // Event handler for user clicking the select-artist button
 
-$("#select-book").on("click", function(event) {
+$("#select-book").on("click", function (event) {
     // Preventing the button from trying to submit the form
     event.preventDefault();
     // Storing the book name
@@ -94,54 +159,16 @@ $("#select-book").on("click", function(event) {
     // Clearing the bookobj list before every search
     // clearArray();
     bookList = [];
-    // Running the searchBandsInTown function(passing in the artist as an argument)
-    searchBooks(inputBook,inputGenre);
-    // Run getTopTen to get 10 most reviewed books from bookList, store as new variable 
-    var topTenBookList = getTopTen(bookList);
 
-    // console.log(topTenBookList);
+    searchBooks(inputBook, inputGenre);
+    
+    // Run getTopTen to get 10 most reviewed books from bookList, store as new variable 
+
+
+
 });
 
-function getTopTen(booksArray) {
-    //loop for each entry in book list
-    for (let i = 0; i < booksArray.length; i++) {
-        //get current title
-        let title = bookArray[i].title;
 
-        //search google book api for current title
-        let queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + title;
 
-        //ajax call
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).done(function(response) {
-            //store number of ratings as score
-            let numRatings = response.items[0].volumeInfo.ratingsCount;
-            let avgRating = response.items[0].volumeInfo.averageRating;
-            //assign scores each object in book list, assign value of 0 if undefined
-            if (numRatings > 0) {
-                booksArray[i].numscores = numRatings;
-                booksArray[i].avgScore = avgRating;
-            } else {
-                booksArray[i].numscores = 0;
-                booksArray[i].avgScore = 0;
-            }
-        })
-    }
 
-    function sortByNumScores(bookArray) {
-        //sort books by number of scores (ascending)
-        let sortedBooks = _.sortBy(bookArray, function(book) {
-            return book.numscores;
-        });
-        //take 10 highest rated books
-        sortedBooks.reverse();
-        let topTen = sortedBooks
-        return topTen.slice(0, 10);
-    }
-    setTimeout(function() {
-        console.log("sorted array", sortByNumScores(booksArray));
-        return sortByNumScores(booksArray);
-    }, 1000)
-}
+    
