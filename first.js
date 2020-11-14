@@ -50,6 +50,40 @@ function searchBooks(place, genre) {
     }, 5000)
 }
 
+<<<<<<< HEAD
+// Event handler for user clicking the select-artist button
+
+$("#select-book").on("click", function(event) {
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    // Storing the book name
+    var inputBook = $("#input-city").val().trim();
+    var inputGenre = $("#genres").val().trim();
+
+    // Clearing the bookobj list before every search
+    // clearArray();
+    bookList = [];
+    // Running the searchBandsInTown function(passing in the artist as an argument)
+    searchBooks(inputBook,inputGenre);
+    // Run getTopTen to get 10 most reviewed books from bookList, store as new variable 
+    var topTenBookList = getTopTen(bookList);
+
+    // console.log(topTenBookList);
+});
+
+localStorage.setItem("bookList", JSON.stringify(bookList)); 
+
+ 
+
+function getTopTen(booksArray) {
+    //loop for each entry in book list
+    for (let i = 0; i < booksArray.length; i++) {
+        //get current title
+        let title = booksArray[i].title;
+
+        //search google book api for current title
+        let queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + title;
+=======
 function getNumScores() {
     //adds number of scores as attribute to each book object in global variable bookList
     len2 = bookList.length;
@@ -59,6 +93,7 @@ function getNumScores() {
         let author = bookList[i].bookAuthor;
         //search google book api for current title + author
         var queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + title + author;
+>>>>>>> 552f785b0ab4ee945e8f9a9eaeb8f9ed17750f07
 
         //ajax call
         $.ajax({
