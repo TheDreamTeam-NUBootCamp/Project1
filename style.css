@@ -1,32 +1,94 @@
+
 * {
 
 font-family: 'Cormorant Garamond', serif;
-
 font-size: 20px;
+text-align: center;
+margin-top: auto;
+margin-left: auto;
+margin-right: auto;
+color:black;
 
-background-color: rgb(247, 243, 236);
+}
+
+header {
+        padding-bottom: 25px;
+}
 
 
- 
+body {
+        background-image: url(./pictureFolderRdH/map-png-1200_857.png);
+}
 
+h1 {
+font-family: 'Cormorant Garamond', serif;
+font-size: 20px;
+font-weight: bolder;
+
+}
+
+h2 {
+font-family: 'Cormorant Garamond', serif;
+font-size: 40px;
+font-weight: bolder;
+color: black;
+outline: black 2px;
+}
+
+h3 {
+font-family: 'Cormorant Garamond', serif;
+font-weight: bolder;
+color:red;
 }
 
 
 
+label {
+font-weight: bolder;
+font-family: 'Cormorant Garamond', serif; 
+font-size: 35px;
+line-height: .8;
+   
+}
+
+.subheader {
+font-weight: bolder;
+color: black;
+text-align: center;
+font-size: 28px;
+   
+}       
 
 
-
-
-
-
-textarea {
-
-        background-image: url(travelbg.jpeg);
+.lead {
+font-family: 'Cormorant Garamond', serif; 
+font-weight: bolder;
 
 }
 
-.button {
 
-        background-image: url(travelbg.jpeg);
+#menu {
+margin-top: 10px;
+}
+
+
+.button  {
+   color:white;
+   font-weight: bolder;
+   font-size: 20px;
+   text-align: center;
+        
+        }
+
+#signUp {
+font-family: 'Cormorant Garamond', serif; 
+font-weight: bolder;
+
 
 }
+
+
+#outPt.column {
+
+}
+
