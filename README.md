@@ -15,7 +15,7 @@ And selects the genre (insert photo)
 
 Once the user hits submit, a list of books by order of reviews will appear on the screen (the 10 most popular by review score on Google books) (insert photo)
 
-Included in the list of books is the title, author, description? (what else are we including?)  (insert Photo)
+Included in the list of books is the title, author,  (what else are we including?)  (insert Photo)
 
 
 
