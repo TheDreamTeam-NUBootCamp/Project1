@@ -22,18 +22,26 @@ body {
 
 h1 {
 font-family: 'Cormorant Garamond', serif;
-font-size: 30px;
+font-size: 20px;
 font-weight: bolder;
 
 }
 
 h2 {
 font-family: 'Cormorant Garamond', serif;
-font-size: 30px;
+font-size: 40px;
 font-weight: bolder;
 color: black;
 outline: black 2px;
 }
+
+h3 {
+font-family: 'Cormorant Garamond', serif;
+font-weight: bolder;
+color:red;
+}
+
+
 
 label {
 font-weight: bolder;

@@ -222,34 +222,40 @@
 <!-- Signup Form taken from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_signup_form_modal | changed CSS-->
   
 
-<button onclick="document.getElementById('signUp').style.display='block'" style="width:auto;"><h2>Click here to become a ReadHere VIP!</h1></button>
+<button onclick="document.getElementById('signUp').style.display='block'" style="width:auto;"><h3> Click here to Signup & become a ReadHere VIP!</h3></button>
 
 <div id="signUp" class="modal">
 <span onclick="document.getElementById('signUp').style.display='none'" class="close" title="Close Modal">&times;</span>
+  
 
 <!-- <form class="modal-content" action="/action_page.php"> -->
       <div class="container">
-      <h1>Create an Account</h1>
-      <p>Please fill out this for</p>
+<h1><button type="button" class="form-control" id="vip" placeholder="Submit"onclick="vipBTN()">Click to Create User Account</button></h1>
+
+      <!-- <h1>Create an Account</h1> -->
+      <p>Please fill out this form</p>
       <hr>
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
+      <input id="emaiL" type="text" placeholder="Enter Email" name="email" required .style.display='none'" >
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input id="passWrd" type="password" placeholder="Enter Password" name="psw" required>
 
       <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      <input id="passWrd2" type="password" placeholder="Repeat Password" name="psw-repeat" required>
       
       <label>
-      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      <input id="cBox" type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
       </label>
     </div>
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
+      <div><button type="button" class="form-control" id="sign" placeholder="Submit"onclick="signupbtn()">Click to Sumbit Registration</button></div>
+      
       <div class="clearfix">
-        <button type="button" onclick="document.getElementById('signUp').style.display='none'" class="submitForm">Click Here to Sumbut Registration</button>
-        <!-- <button type="submit" class="signupbtn">Sign Up</button> -->
+      <button type="button" onclick="document.getElementById('signUp').style.display='none'" class="submitForm"><h3>Exit</h3></button>
+      </button>
+
       </div>
     </div>
   </form>
@@ -269,7 +275,7 @@
 
       <div class="small-6 large-3 columns">
         <p class="lead"></p>
-<!-- <a href="#contact">Become a Member!</a -->
+
 
 
       </div>
@@ -291,13 +297,43 @@
 
 <!-- Signup Form onClick function taken from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_signup_form_modal  -->
 
-<script>var modal = document.getElementById('signUp');
+<script>
+var modal = document.getElementById('signUp');
+
+
+var emailSub=document.getElementById("emaiL");
+var passWord=document.getElementById("passWrd");
+var passWord=document.getElementById("passWrd2");
+var checkBox=document.getElementById("cBox");
 
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+    
+
   }
 }
+
+function signupbtn() {
+
+  $('#emaiL').hide();
+  $('#passWrd').hide();
+  $('#passWrd2').hide();
+  $('#cBox').hide();
+  
+ 
+}
+
+function vipBTN() {
+
+  $('#emaiL').show();
+  $('#passWrd').show();
+  $('#passWrd2').show();
+  $('#cBox').show();
+
+}
+
+
 </script>
 </body>
 
