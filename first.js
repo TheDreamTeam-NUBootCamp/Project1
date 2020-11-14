@@ -12,8 +12,8 @@ function searchBooks(place, genre) {
         console.log(response.docs);
 
         bookList = [];
-
-        for (var i = 0; i < 25; i++) {
+        let len = Math.min(response.docs.length, 25);
+        for (var i = 0; i < len; i++) {
 
             let bookObj = {
                 bookTitle: response.docs[i].title,
@@ -24,7 +24,11 @@ function searchBooks(place, genre) {
 
             bookList.push(bookObj);
         }
-        getScores(bookList);
+        if (len > 10) {
+            getScores(bookList);
+        } else {topTen = bookList;
+                appendValues(topTen);}
+        
     }); 
 }
 
@@ -74,9 +78,22 @@ function getScores(booksArray) {
     }, 2000)
     setTimeout(function(){
         console.log("topTen",topTen);
+        appendValues(topTen);
     },2000)
+    
 }
 
+function appendValues(){
+
+    console.log(topTen);
+
+    for (var i = 0; i < topTen.length; i++){
+        $(".lead-"+ [i]).text(topTen[i].bookTitle);
+        $(".author-"+ [i]).text(topTen[i].bookAuthor);
+        $(".img-"+ [i]).attr("src", "https://covers.openlibrary.org/b/id/" + topTen[i].bookCoverId + "-L.jpg")
+    }
+    
+}
 
 
 // Event handler for user clicking the select-artist button
